@@ -2,7 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn import linear_model
 
-
 df = pd.read_csv('homeprices.csv')
 print(df)
 
@@ -34,3 +33,10 @@ plt.xlabel('area(sq.ft)')
 plt.ylabel('Price(rupees)')
 plt.plot(df.area, model.predict(df[['area']]), color='red')
 plt.show()
+
+# Simple linear regression by passing through csv file and saving it inside the another csv
+areas = pd.read_csv('areas.csv')
+dataframe = model.predict(areas)
+areas['price'] = dataframe
+
+areas.to_csv('FinalList.csv', index=False)
